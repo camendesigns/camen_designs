@@ -1,0 +1,4 @@
+.DS_Store
+*~
+aws.config.php
+.idea/*

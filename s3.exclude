@@ -1,0 +1,12 @@
+*.git*
+README
+README.markdown
+refreshCloudFront.php
+sync_s3.sh*
+build.xml
+aws.config.*
+s3.exclude
+*~
+.DS_Store
+thumbs.db
+.idea/*

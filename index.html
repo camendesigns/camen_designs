@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+</html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Camen Camen - Camen Designs</title>
+    <link rel="stylesheet" href="css/desktop.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="reset.css" type="text/css" media="screen" />
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+
+
+    <script src="js/modernizr.js"></script>
+    <script src="js/respond.min.js"></script>
+
+    <script type="text/javascript" src="js/browserdetect.js"></script>
+
+    <!-- Enum JS -->
+    <script type="text/javascript" src="js/enum/pages.js"></script>
+
+    <!-- Model JS -->
+    <script type="text/javascript" src="js/model/AppProxy.js"></script>
+    <script type="text/javascript" src="js/model/ImageProxy.js"></script>
+
+    <!-- View JS -->
+    <script type="text/javascript" src="js/view/desktop/ResumeMediator.js"></script>
+    <script type="text/javascript" src="js/view/desktop/HomeMediator.js"></script>
+    <script type="text/javascript" src="js/view/desktop/GalleryMediator.js"></script>
+
+
+
+
+</head>
+<body>
+	<div id="wrapper">
+		<div id="gallery-overlay"></div>
+		    <div id="logo">
+			    <img src="images/foundation/cd_logo.png" />
+			    <div class="email">
+				    <a href="mailto:carin@carincamen.com">carin@carincamen.com</a><br/>
+                    <a href="http://www.carincamenportfolio.com/" target="_blank">CarinCamenPortfolio.com</a>
+			    </div>
+		    </div>
+		<div id="content">
+		
+		</div>
+		<div id="footer">
+			Copyright 2012 &bull; Carin Camen &bull; All Rights Reserved<br />
+            <a href="http://www.carincamenportfolio.com/" target="_blank">CarinCamenPortfolio.com</a>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+
+		window_hashChangeHandler = function()
+		{
+			if(window.location.hash) {
+
+				// split up hash and parameters
+				var parts = window.location.hash.split('/');
+				
+				switch( parts[0] )
+				{
+					case enums.pages.home:
+						view.HomeMediator.register($('#content'), parts);
+						model.AppProxy.activePage = enums.pages.home;
+						break;
+					case enums.pages.printGallery:
+						view.GalleryMediator.register($('#content'), parts);
+						model.AppProxy.activePage = enums.pages.printGallery;
+						break;
+					case enums.pages.publicationGallery:
+						view.GalleryMediator.register($('#content'), parts);
+						model.AppProxy.activePage = enums.pages.publicationGallery;
+						break;
+					case enums.pages.packagingGallery:
+						view.GalleryMediator.register($('#content'), parts);
+						model.AppProxy.activePage = enums.pages.packagingGallery;
+						break;
+                    case enums.pages.identityGallery:
+                        view.GalleryMediator.register($('#content'), parts);
+                        model.AppProxy.activePage = enums.pages.identityGallery;
+                        break;
+					case enums.pages.webGallery:
+						view.GalleryMediator.register($('#content'), parts);
+						model.AppProxy.activePage = enums.pages.webGallery;
+						break;
+                    case enums.pages.processGallery:
+                        view.GalleryMediator.register($('#content'), parts);
+                        model.AppProxy.activePage = enums.pages.processGallery;
+                        break;
+					default:
+						view.HomeMediator.register($('#content'), parts);
+						model.AppProxy.activePage = enums.pages.home;
+				}
+
+			} else {
+				view.HomeMediator.register($('#content'));
+				model.AppProxy.activePage = enums.pages.home;
+			}
+		}
+
+		var images = new Array();
+
+		function preload() {
+			for (i = 0; i < preload.arguments.length; i++) {
+				images[i] = new Image();
+				images[i].src = preload.arguments[i];
+			}
+		}
+
+		$(function(){
+
+			// preload background images
+			
+			preload(
+				"images/Background1.jpg",
+				"images/Background2.jpg",
+				"images/Background3.jpg"
+			);
+
+
+
+			$(window).bind('hashchange', window_hashChangeHandler);
+
+			window_hashChangeHandler();
+
+		});
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="Camen-Designs-Portfolio" default="deploy">
+	<property environment="env"/>
+	
+	<!--
+	<property name="WEB_ROOT" value="${env.WEB_ROOT}" />
+	-->
+	<property name="WEB_ROOT" value="/var/www/" />
+
+	<target name="clean-webroot">
+		<delete includeemptydirs="true">
+			<fileset dir="${WEB_ROOT}" includes="**/*" defaultexcludes="false"/>
+		</delete>
+	</target>
+	
+	<target name="deploy">
+		
+		<copy todir="${WEB_ROOT}">
+			<fileset dir="${basedir}" />
+		</copy>
+		
+	</target>
+
+</project>
